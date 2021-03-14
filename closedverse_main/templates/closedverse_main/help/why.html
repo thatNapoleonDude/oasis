@@ -1,0 +1,31 @@
+{% extends "closedverse_main/layout.html" %}
+{% block main-body %}{% load closedverse_user %}
+{% user_sidebar request user user.profile 0 True %}
+<div class="main-column" id="help">
+<div class="post-list-outline">
+    <h2 class="label">Why?</h2>
+    <div id="guide" class="help-content">
+      <div class="faq">
+		
+		<p><i>Why</i>: Adverb, conjunction.</p>
+		
+		<h2>Why did you make this?</h2>
+		<p>Oasis is a well made site based off Closedverse.</p>
+		<h2>Why should I join?</h2>
+		<p>Well, we have..</p>
+		<ul>
+		<li>No post limit, duh</li>
+		<li>No over-protective rules made to conform to 7 year olds, duh. And, said 7 year olds don't have staff, duh</li>
+		<li>The ability to do what you want, duh</li>
+		<li>Friend requests and messaging! Activity Feed posting!</li>
+		<li>Post editing! You can draw on PC!!!!!!!!!!</li>
+		<li><a href="https://github.com/OhHeyItsPip">Open-source!</a> Make yourself a epic pasta.</li>
+		<li>Miiverse users. You know, the ones you know and love.</li>
+		<li>This works after Miiverse shuts down. That is, if Nintendo doesn't shut down their Miis server. Please do not do that Nintendo thanks bye also don't sue me.</li>
+		
+		
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,72 @@
+{% extends "closedverse_main/layout.html" %}
+{% load closedverse_tags %}{% load closedverse_community %}{% block main-body %}
+<div class="community-main">
+		<div id="community-eyecatch"></div>
+	</div>
+	<div class="community-top-sidebar">
+		<form action="{% url "main:community-search" %}" class="search">
+			<input maxlength="32" name="query" placeholder="Search all communities" type="text"><input title="Search" type="submit" value="q">
+		</form>
+
+		<!--
+		<div id="identified-user-banner">
+			<a class="list-button" href="/identified_user_posts"><span class="title">Get the latest news here!</span><span class="text">Posts from Verified Users</span></a>
+		</div>-->
+		{% if settings.memo_title and settings.memo_msg %}
+		<div class="post-list-outline index-memo">
+			<h2 class="label">{{ settings.memo_title }}</h2>
+			{% autoescape off %}{{ settings.memo_msg }}{% endautoescape %}
+             		<h2>Welcome to Oasis!</h2>
+			{% autoescape off %}{{ settings.memo_msg1 }}{% endautoescape %}
+             		<h2>Who's behind this?</h2>
+			{% autoescape off %}{{ settings.memo_msg2 }}{% endautoescape %}
+            		<h2>Will Oasis hack me?</h2>
+			{% autoescape off %}{{ settings.memo_msg3 }}{% endautoescape %}
+            		<h2>Will I hack Oasis?</h2>
+			{% autoescape off %}{{ settings.memo_msg4 }}{% endautoescape %}
+            		<h2>Anything else I should know?</h2>
+			{% autoescape off %}{{ settings.memo_msg5 }}{% endautoescape %}
+
+		</div>
+		{% endif %}
+
+	</div>
+	<div class="community-main">
+	{% if favorites %}
+		<h3 class="community-title symbol community-favorite-title">Favorite communities</h3>
+		<div class="card" id="community-favorite">
+		  <ul>
+			{% for favorite in favorites %}
+				<li class="test-favorite-community">
+				  <a href="{% url "main:community-view" favorite.id %}" class="icon-container">
+					<img src="{{ favorite.icon }}" class="icon">
+					
+				  </a>
+				</li>
+			 {% endfor %}
+				
+			<li class="read-more">
+			  <a href="{% url "main:community-favorites" %}" class="favorite-community-link symbol"><span class="symbol-label">Show more</span></a>
+			</li>
+		  </ul>
+		</div>
+	{% endif %}
+		{% if feature %}
+			{% community_page_element feature "Featured Communities" True %}
+		{% endif %}
+			{% community_page_element general "General Communities" %}
+			{% community_page_element game "Game Communities" %}
+			{% community_page_element special "Special Communities" %}
+			<a href="{% url "main:community-viewall" %}" class="big-button">Show more</a>
+	</div>
+	<div id="community-guide-footer">
+		<div id="guide-menu">
+			<a class="arrow-button" href="{% url "main:help-why" %}"><span>Why join?</span></a>
+			<a class="arrow-button" href="{% url "main:help-rules" %}"><span>Oasis Rules</span></a>
+			<a class="arrow-button" href="{% url "main:help-faq" %}"><span>Frequently Asked Questions (FAQ)</span></a>
+			{% if settings.PROD %}
+			{% endif %}
+			<a class="arrow-button" href="https://www.minecraft.net/en-us/"><span>Minecraft</span></a>
+		</div>
+	</div>
+{% endblock %}

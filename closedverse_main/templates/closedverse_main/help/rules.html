@@ -1,0 +1,30 @@
+{% extends "closedverse_main/layout.html" %}
+{% block main-body %}{% load closedverse_user %}
+{% user_sidebar request user user.profile 0 True %}
+<div class="main-column" id="help">
+<div class="post-list-outline">
+    <h2 class="label">Oasis Rules</h2>
+      <div class="help-content">
+        <p>Like any other site, there are rules to keep it from dying. So,</p>
+		
+		<h2>NSFW, NSFL, and Illegal Content</h2>
+		<p>NSFW content (Sexually explicit content) is allowed in messages if people are ok with it, or Activity Feed. Loli/Shota, however, is only allowed in messages if the other person is ok with it. NSFL (Such as gore and shock images), however, are not allowed anywhere. Do not do that. Along with that, illegal content is not allowed at all. We have no problem reporting you to the authorities.</p>
+		<h2>Spam</h2>
+		<p>Please do not spam. This includes posting, messaging, or epicing posts a lot. Large amounts of data from these repeated actions take up space on the server as that’s not good.
+		<h2>Hate speech</h2>
+		<p>Please do not be an asshole to any users. Malicious intents and repeated attacks on a user, or being a rude person overall will get you a punishment. Along with that, please don’t be rude to any of the moderators.</p>
+		<h2>Hacking, Joke/Public Accounts, and Raids</h2>
+		<p> Attempting to take blind stabs at the code will get you banned. Additionally, impersonating someone, publicly posting your password, or raiding will get you banned. Do not. .</a>.
+		<h2>Repeals</h2>
+		<p>If you’re banned, there will usually be a set timeframe. Most bans last less than a day unless it’s really bad or a raid. If you wanna be unbanned, however, message an admin offsite and we’ll see what we can do.</p>
+		<br>Many of the users here have previously used a site where bans were given out mercilessly, so you’ll probably end up being forgiven at some point.</p>
+		<h2>Admin</h2>
+		<p>The administration for this website is voted on by the users. You won’t get it simply by asking for it or by trying to bribe for it. If you do nothing but ask for a role, you’ll likely end up getting banned for a bit. Admins that intentionally and repeatadly abuse their powers will be demoted. You are not above the rules, and your powers aren't a toy..</p>
+		<h2>Age</h2>
+		<p>.Users under 13 can join, but they can’t run for any mod/admin/staff position. Additionally, you’ll be told to stop if you act immaturely. We’re ok with you being under 13, but act like you’re 13, please.</p>
+		<br><hr>
+		<h2>Of course, if you have any questions, feel free to contact a mod or admin.</h2>
+		
+  </div>
+</div>
+{% endblock %}

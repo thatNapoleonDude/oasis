@@ -1,0 +1,22 @@
+{% load closedverse_user %}{% load closedverse_tags %}<div class="list follow-list">
+  <ul class="list-content-with-icon-and-text arrow-list" id="user-man-list" data-next-page-url="{% if next %}/users.html?o={{ next }}{% endif %}">
+  {% for user in users %}
+  <li class="trigger" data-href="{% url "main:user-view" user.username %}" data-action="{% url "main:user-manager" user.username %}">
+    {% user_icon_container user 0 %}
+
+	<div class="toggle-button">
+      	<button type="button" class="button user-manage symbol">Manage</button>
+	</div>
+
+  <div class="body">
+    <p class="title">
+      <span class="nick-name"><a href="{% url "main:user-view" user.username %}">{{ user.nickname }}</a></span>
+      <span class="id-name">{{ user.username }}</span>
+    </p>
+    <p class="text">{{ user.profile.comment }}</p>
+
+  </div>
+</li>
+  {% endfor %}
+  </ul>
+</div>
