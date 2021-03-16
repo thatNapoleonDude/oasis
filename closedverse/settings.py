@@ -25,9 +25,10 @@ PROD = True
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '@w=h&i0g-syg%_^=81a+ht-!8b$@v+mvo*fgv**2$c34+sd=)r'
+# Generate one at: https://djecrety.ir/
+SECRET_KEY = ''
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'kokomo-paradise.gq', 'web.kokomo-paradise.gq'
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'le-kokomo.party'
 ]
 
 
@@ -40,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'ban',
 	#pip3 install django-markdown-deux django-markdown2
 	'markdown_deux',
     'closedverse_main',
@@ -53,6 +55,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'ban.middleware.BanManagement',
 ]
 
 ROOT_URLCONF = 'closedverse.urls'
@@ -82,9 +85,9 @@ WSGI_APPLICATION = 'closedverse.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'kokomo_db',
-        'USER': 'kokomo',
-        'PASSWORD': 'PypyIsFuni',
+        'NAME': 'oasis_db',
+        'USER': 'oasis',
+        'PASSWORD': 'password',
         'HOST': 'localhost',
         'PORT': '',
     }
@@ -148,8 +151,8 @@ MEDIA_URL = '/i/'
 
 # Closedverse settings
 # reCAPTCHA v2 keys, None for no reCAPTCHA
-recaptcha_pub = ''
-recaptcha_priv = ''
+recaptcha_pub = '6LeYlX8aAAAAAEdFEwvoGfm0WrXQiZscIC7SWy5Y'
+recaptcha_priv = '6LeYlX8aAAAAAKr8yKgyKatJ6oozHfxMTY8t03ac'
 
 # NNID forbidden list. None for no passing.
 nnid_forbiddens = BASE_DIR + '/forbidden.json'
@@ -158,13 +161,15 @@ nnid_forbiddens = BASE_DIR + '/forbidden.json'
 memo_title = "Oasis"
 memo_msg = " "
 memo_title1 = "What is this? I thought it was dead?!"
-memo_msg1 = "Pip owns the site, PF2M set up the server and further development is done by Triangles. This site is based off Closedverse."
+memo_msg1 = "Oasis is now... A Oasis Clone I guess. You had enough of Closedverse Clones? Welcome Oasis clones."
 memo_title2 = "Will Closedverse HACK ME?!?"
-memo_msg2 = "no it won't"
+memo_msg2 =   "Pip and PF2M made Oasis, now SMF9 is rehosting it. This site is still based off Closedverse."
 memo_title3 = "Will ME HACK Closedverse?!?"
-memo_msg3 = "you better not."
+memo_msg3 =    "No you should not worry about this since even I as the Owner can't see your IP when signing up I'm not evil and won't grab your IP or crap"
 memo_title4 = "I want to be MOD."
-memo_msg4 = "no"
+memo_msg4   = "No it's boring at this point. AND ALSO DO NOT TRY TO ESCAPE A BAN. That is super annoying. For real."
+memo_title5 = "pp"
+memo_msg5 = "Thanks for asking but not for now. In fact yes, our Administration is supercharged etc."
 
 # Client key to use for iphub.email, because we're using that
 # None for no IP checking (recommended since this is so slow)
