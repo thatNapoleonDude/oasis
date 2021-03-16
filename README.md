@@ -27,8 +27,9 @@ By the way do not forget to create an user on your server. If you do not know ho
 
 To install the required packages, use the following commands:
 ```console
-$ sudo apt update
+$ sudo apt update & sudo apt upgrade
 $ sudo apt install python3-pip python3-dev libpq-dev postgresql postgresql-contrib nginx curl
+$ pip3 install Django urllib3 lxml passlib bcrypt pillow django-markdown-deux django-markdown2
 ```
 To create the database needed for Oasis, run the following command:
 ```console
