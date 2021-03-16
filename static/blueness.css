@@ -1,3 +1,4 @@
+/* inverse was here lol */
 #sidebar-profile-body .nick-name, .news-list .nick-name, .list-content-with-icon-and-text .nick-name a, .user-name a {
     color: #fff;
 }
@@ -51,7 +52,7 @@ input[type=text], input[type=password], input[type=email], input:not([type]), se
     border-bottom-color: #000;
 }
 #global-menu li.selected a {
-    color: #0080ff !important;
+    color: #309A86 !important;
 }
 .follow-done-button:after {
     content: 'ing';
@@ -346,8 +347,8 @@ form.search input[type="submit"] {
     border-bottom: 1px solid #000;
 }
 h2.label-diary_post, h2.label-diary {
-    border-bottom: 3px solid #04c9db;
-    color: #00b7d8;
+    border-bottom: 3px solid #309A86;
+    color: #309A86;
 }
 h2.label-artwork_post, h2.label-artwork {
     border-bottom: 3px solid #fcc735;
