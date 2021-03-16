@@ -20,7 +20,9 @@ $ pip3 install Django urllib3 lxml passlib bcrypt pillow django-markdown-deux dj
 [![forthebadge](https://forthebadge.com/images/badges/you-didnt-ask-for-this.svg)](https://forthebadge.com)
 
 # **Usage**
-This guide assumes that you are using Ubuntu 18.04 or Ubuntu 20.04. If you are not using Ubuntu 18.04, look up a guide for your platform that uses Gunicorn, PostgreSQL, NGINX, and Django.
+This guide assumes that you are using Ubuntu 18.04 or Ubuntu 20.04. If you are not using Ubuntu 18.04/20.04, look up a guide for your platform that uses Gunicorn, PostgreSQL, NGINX, and Django.
+
+By the way do not forget to create an user on your server. If you do not know how to do it, check [this]https://www.digitalocean.com/community/tutorials/how-to-create-a-new-sudo-enabled-user-on-ubuntu-18-04-quickstart guide by DigitalOcean.
 
 To install the required packages, use the following commands:
 ```console
@@ -61,15 +63,16 @@ $ source oasis_env/bin/activate
 ```
 And install the requirements with the following:
 ```console
-$ pip install -r requirements.txt
 $ pip install psycopg2
 $ pip install gunicorn
+$ pip install requests
 ```
 Edit your settings using:
 ```console
 $ nano ~/oasis/closedverse/settings.py
 ```
 Remember to change the user and password for the user in the settings!
+For the Django Secret Key (KEEP SECRET!!!!!), you can generate one here. https://djecrety.ir/
 Also, don't forget to add your domain to the ALLOWED_HOSTS portion of the settings.py
 
 Now run the following to make the database:
@@ -79,7 +82,7 @@ $ python manage.py makemigrations closedverse_main
 $ python manage.py migrate
 ```
 
-And run the following to make the admin user:
+And run the following to make the admin user  (if you want an admin user this step is necessary):
 ```console
 $ python manage.py createsuperuser
 ```
@@ -176,13 +179,14 @@ server {
     listen 80;
     server_name insert_server_domain_here;
 
-    location = /favicon.ico { access_log off; log_not_found off; }
+   location = /favicon.png { access_log off; log_not_found off; }
     location /s/ {
-        root /home/YOUR_USERNAME_HERE/oasis/s;
+        alias /home/YOUR_USERNAME_HERE/oasis/s/;
     }
     location /i/ {
-        root /home/YOUR_USERNAME_HERE/oasis/media;
+        alias /home/YOUR_USERNAME_HERE/oasis/i/;
     }
+
     
     location / {
         include proxy_params;
