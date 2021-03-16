@@ -22,7 +22,7 @@ $ pip3 install Django urllib3 lxml passlib bcrypt pillow django-markdown-deux dj
 # **Usage**
 This guide assumes that you are using Ubuntu 18.04 or Ubuntu 20.04. If you are not using Ubuntu 18.04/20.04, look up a guide for your platform that uses Gunicorn, PostgreSQL, NGINX, and Django.
 
-By the way do not forget to create an user on your server. If you do not know how to do it, check [this]https://www.digitalocean.com/community/tutorials/how-to-create-a-new-sudo-enabled-user-on-ubuntu-18-04-quickstart guide by DigitalOcean.
+By the way do not forget to create an user on your server. If you do not know how to do it, check [this](https://www.digitalocean.com/community/tutorials/how-to-create-a-new-sudo-enabled-user-on-ubuntu-18-04-quickstart) guide by DigitalOcean.
 
 To install the required packages, use the following commands:
 ```console
