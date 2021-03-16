@@ -1,5 +1,5 @@
 # Oasis 2.0 [![Build Status](https://travis-ci.com/stampylongr/oasisclosed.svg?branch=master)](https://travis-ci.com/stampylongr/oasisclosed)
-A modified version of Oasis.
+A modified version of Oasis. Also join our Website! https://le-kokomo.party
 
 # Requirements
 ```console
