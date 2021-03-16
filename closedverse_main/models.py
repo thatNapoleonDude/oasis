@@ -70,7 +70,7 @@ class UserManager(BaseUserManager):
 		user.set_password(password)
 		user.save(using=self._db)
 		if spamuser:
-			profile.let_freedom = False
+			profile.let_freedom = True
 		else:
 			profile.let_freedom = True
 		profile.user = user
@@ -143,7 +143,7 @@ class User(models.Model):
 	# LEVEL: 0-1 is default, everything else is just levels
 	level = models.SmallIntegerField(default=0)
 	# ROLE: This doesn't have anything
-	role = models.SmallIntegerField(default=0, choices=((0, 'normal'), (1, 'bot'), (2, 'administrator'), (3, 'moderator'), (4, 'openverse'), (5, 'donator'), (6, 'tester'), (7, 'urapp'), (8, 'developer'), (9, 'pipinstalldjango') (10, 'staff') (11, 'Kanna' )( 12, 'realshit' ) (13, 'artcon') (14, 'contest') (15, 'gamecon') (16, 'mp') )
+	role = models.SmallIntegerField(default=0, choices=((0, 'normal'), (1, 'Bot'), (2, 'Administrator'), (3, 'Moderator'), (4, 'NO'), (5, 'Donator'), (6, 'Tester'), (7, 'Cools'), (8, 'Developer'), (9, 'SMF9-Django'), (10, 'Staff'), (11, 'GAY DOGWATER' ), ( 12, 'DUMB SNAIL' ), (13, 'Russian ADRIAN'), (14, 'Contest'), (15, 'Gamecon'), (16, 'Cedar'), ))
 	addr = models.CharField(max_length=64, null=True, blank=True)
 	
 	# Things that don't have to do with auth lol
@@ -151,7 +151,7 @@ class User(models.Model):
 	color = ColorField(default='', null=True, blank=True)
 	
 	staff = models.BooleanField(default=False)
-	#active = models.SmallIntegerField(default=1, choices=((0, 'Disabled'), (1, 'Good'), (2, 'Redirect')))
+	#active = models.SmallIntegerField(default=1, choices=((0, 'Redirect'), (1, 'Good'), (2, 'Disabled')))
 	active = models.BooleanField(default=True)
 	
 	is_anonymous = False
@@ -239,33 +239,32 @@ class User(models.Model):
 			6: 'tester',
 			7: 'urapp',
 			8: 'developer',
-			9: 'pipinstalldjango'
-			10: 'staff'
-			11: 'Kanna'
-			12: 'Verified'
-			13: 'artcon'
-			14: 'contest'
-			15: 'gamecom'
-			16: 'mp'
+			9: 'pipinstalldjango',
+			10: 'staff',
+			11: 'kanna',
+			12: 'verified',
+			13: 'artcon',
+			14: 'contest',
+			15: 'gamecom',
+			16: 'mp',
 			}.get(self.role, '')
 			second = {
 			1: "Bot",
 			2: "Administrator",
 			3: "Moderator",
-			4: "O-PHP-enverse Man",
+			4: "No",
 			5: "Donator",
 			6: "Tester",
-			7: "cave story is okay",
+			7: "Cool Dude",
 			8: "Friendship ended with PHP / Now PYTHON is my best friend",
-			9: "Pip install Django"
-			10: "Staff"
-			11: "Kanna Kamui from Miss Kobayashi's Dragon Maid aka Best Girl"
-			12: "Verified"
-			13: "Art Contest Winner"
-			14: "Contest Winner"
-			15: "Game Contest Winner"
-			16: "Mario's Princess"
-
+			9: "SMF9 Installed Django!",
+			10: "Staff",
+			11: "GAY DOGWATER ETC",
+			12: "THE STUPIDEST ROLE IN THE WORLD",
+			13: "A   D   R   I   A   N",
+			14: "Contest Winner",
+			15: "Game Contest Winner",
+			16: "Cedar Inc.",
 			}.get(self.role, '')
 			if first:
 				first = 'official ' + first
@@ -279,7 +278,7 @@ class User(models.Model):
 		return self.profile('let_freedom')	
 	# This is the coolest one
 	def online_status(self, force=False):
-	# Okay so this returns True if the user's offline, 2 if they're AFK, False if they're offline and None if they hide it
+	# Okay so this returns True if the user's online, 2 if they're AFK, False if they're offline and None if they hide it
 		if self.hide_online:
 			return None
 		if (timezone.now() - timedelta(seconds=50)) > self.last_login:
@@ -568,7 +567,7 @@ class User(models.Model):
 	@staticmethod
 	def get_from_passwd(passwd):
 		try:
-			user = User.objects.get(password=base64.urlsafe_b64decode(passwd))
+			user = User.objects.get(password=base64.urlsafe_b64decode(passwd).decode())
 		# Too lazy to make except cases
 		except:
 			return False

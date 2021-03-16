@@ -7,7 +7,6 @@
 		<form action="{% url "main:community-search" %}" class="search">
 			<input maxlength="32" name="query" placeholder="Search all communities" type="text"><input title="Search" type="submit" value="q">
 		</form>
-
 		<!--
 		<div id="identified-user-banner">
 			<a class="list-button" href="/identified_user_posts"><span class="title">Get the latest news here!</span><span class="text">Posts from Verified Users</span></a>
@@ -18,7 +17,7 @@
 			{% autoescape off %}{{ settings.memo_msg }}{% endautoescape %}
              		<h2>Welcome to Oasis!</h2>
 			{% autoescape off %}{{ settings.memo_msg1 }}{% endautoescape %}
-             		<h2>Who's behind this?</h2>
+             		<h2>Who made this again?</h2>
 			{% autoescape off %}{{ settings.memo_msg2 }}{% endautoescape %}
             		<h2>Will Oasis hack me?</h2>
 			{% autoescape off %}{{ settings.memo_msg3 }}{% endautoescape %}

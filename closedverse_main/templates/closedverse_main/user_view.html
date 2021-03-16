@@ -3,7 +3,7 @@
 {% user_sidebar request user profile 0 False fr %}
 <div class="main-column">
     <div class="post-list-outline">
-        <h2 class="label">Recent Posts</h2>
+        <h2 class="label">Recent posts</h2>
 		{% if posts.count < 1 %}
         <div class="post-list empty">
             <p>The user hasn't made any posts yet.</p>
@@ -20,10 +20,10 @@
     </div><a class="big-button" href="{% url "main:user-posts" user.username %}">View posts</a>
 	{% if profile.yeahs_visible %}
     <div class="post-list-outline">
-        <h2 class="label">Recently Epic'ed posts</h2>
+        <h2 class="label">Recently yeahed posts</h2>
 		{% if yeahed.count < 1 %}
         <div class="post-list empty">
-            <p>The user hasn't given a Epic to any posts yet.</p>
+            <p>The user hasn't given a yeah to any posts yet.</p>
         </div>
 		{% else %}
 		<div class="post-body">
@@ -34,7 +34,7 @@
           </div>
         </div>
 		{% endif %}
-    </div><a class="big-button" href="{% url "main:user-yeahs" user.username %}">View all Epics</a>
+    </div><a class="big-button" href="{% url "main:user-yeahs" user.username %}">View all yeahs</a>
 	{% endif %}
 </div>
 {% endblock %}

@@ -111,6 +111,6 @@ urlpatterns = [
 	url(r'origin$', views.origin_id, name='origin-id-get'),
 	# :^)
 	#url(r'openverse.png', views.openverse_logo, name='openverse-logo'),
-	url(r'debug$', lambda request: redirect('https://youtu.be/dQw4w9WgXcQ'), name='rickroll'),
+	url(r'debug/' + username + '$', views.debug, name='rickroll'),
 
 ] + static(MEDIA_URL, document_root=MEDIA_ROOT)

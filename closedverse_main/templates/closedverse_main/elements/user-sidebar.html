@@ -67,14 +67,14 @@
   <div class="sidebar-setting sidebar-container">
     <div class="sidebar-post-menu">
       <a href="{% url "main:user-posts" user.username %}" class="sidebar-menu-post with-count symbol{% if selection == 1 %} selected{% endif %}">
-        <span>{% if user.is_me %}My{% else %}All{% endif %} posts</span>
+        <span>{% if user.is_me %}My{% else %}All{% endif %} Posts</span>
         <span class="post-count">
           <span class="test-post-count">{{ user.num_posts }}</span>
         </span>
       </a>
 	  {% if profile.comments_visible %}
 	    <a href="{% url "main:user-comments" user.username %}" class="sidebar-menu-replies with-count symbol{% if selection == 6 %} selected{% endif %}">
-        <span>{% if user.is_me %}My{% else %}All{% endif %} comments</span>
+        <span>{% if user.is_me %}My{% else %}All{% endif %} Comments</span>
         <span class="post-count">
           <span class="test-reply-count">{{ user.num_comments }}</span>
         </span>
@@ -82,7 +82,7 @@
 	  {% endif %}
 	  {% if profile.yeahs_visible %}
       <a href="{% url "main:user-yeahs" user.username %}" class="sidebar-menu-empathies with-count symbol{% if selection == 2 %} selected{% endif %}">
-        <span>Epics Given</span>
+        <span>Yeahs Given</span>
         <span class="post-count">
           <span class="test-empathy-count">{{ user.num_yeahs }}</span>
         </span>
@@ -97,7 +97,7 @@
         <p class="js-truncated-text">{{ profile.comment|truncatechars:300|linebreaksbr }}</p>
 		{% if profile.comment|length > 299 %}
           <p class="js-full-text none">{{ profile.comment|linebreaksbr }}</p>
-          <button type="button" class="description-more-button js-open-truncated-text-button">Show more</button>
+          <button type="button" class="description-more-button js-open-truncated-text-button">Show More</button>
 		{% endif %}
       </div>
     {% endif %}
@@ -121,14 +121,14 @@
 			</div>
 		</div>
 		<div class="data-content">
-			<h4><span>Date joined</span></h4>
+			<h4><span>Date Joined</span></h4>
 			<div class="note">
 				<span>{% time user.created True %}</span>
 			</div>
 		</div>
 		{% if not user.hide_online %}
 		<div class="data-content">
-			<h4><span>Last seen</span></h4>
+			<h4><span>Last Seen</span></h4>
 			<div class="note">
 				<span>{% time user.last_login True %}</span>
 			</div>

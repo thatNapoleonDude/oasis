@@ -58,34 +58,16 @@ def get_mii(id):
 	if "img/anonymous-mii.png" in miihash:
 		miihash = ''
 	"""
-	# Using AccountWS
-	dmca = {
-		'X-Nintendo-Client-ID': 'a2efa818a34fa16b8afbc8a74eba3eda',
-		'X-Nintendo-Client-Secret': 'c91cdb5658bd4954ade78533a339cf9a',
-	}
-	# TODO: Make this, the gravatar request, and reCAPTCHA request escape (or plainly use) URL params
-	nnid = requests.get('https://accountws.nintendo.net/v1/api/admin/mapped_ids?input_type=user_id&output_type=pid&input=' + id, headers=dmca)
-	nnid_dec = etree.fromstring(nnid.content)
-	del(nnid)
-	pid = nnid_dec[0][1].text
-	if not pid:
+	nnid = requests.get('https://ariankordi.net/mii/' + id)
+	if nnid.status_code == 404:
 		return False
-	del(nnid_dec)
-	mii = requests.get('https://accountws.nintendo.net/v1/api/miis?pids=' + pid, headers=dmca)
-	try:
-		mii_dec = etree.fromstring(mii.content)
-	# Can't be fucked to put individual exceptions to catch here
-	except:
-		return False
-	del(mii)
-	try:
-		miihash = mii_dec[0][2][0][0].text.split('.net/')[1].split('_')[0]
-	except IndexError:
-		miihash = None
-	screenname = mii_dec[0][3].text
-	nnid = mii_dec[0][6].text
-	del(mii_dec)
-	
+	nnid.raise_for_status()
+	repre = nnid.json()
+
+	nnid = repre['user_id']
+	miihash = repre['images'][0]['url'].split('.net/')[1].split('_')[0]
+	screenname = repre['name']
+
 	# Also todo: Return the NNID based on what accountws returns, not the user's input!!!
 	return [miihash, screenname, nnid]
 
@@ -106,14 +88,14 @@ def image_upload(img, stream=False, drawing=False):
 	else:
 		# Brand New drawing checksum
 		# Never mind
-		if drawing:
-			if not '----/' in img:
-				return 1
-			hasha = img.split('----/')
+		#if drawing:
+		#	if not '----/' in img:
+		#		return 1
+		#	hasha = img.split('----/')
 			# Appears to be broken; works some of the time, other times 
 			#if not 0 > int(hasha[0]) and crc32(bytes(hasha[1], 'utf-8')) != int(hasha[0]):
 			#	return 1
-			img = hasha[1]
+		#	img = hasha[1]
 		try:
 			decodedimg = base64.b64decode(img)
 		except ValueError:
